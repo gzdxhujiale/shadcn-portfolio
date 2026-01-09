@@ -23,32 +23,41 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar'
+import { useNavigation } from '@/composables/useNavigation.js'
 
-const props = withDefaults(
-  defineProps<{
-    label?: string
-    showMoreButton?: boolean
-    projects: {
-      name: string
-      url: string
-      icon: LucideIcon
-    }[]
-  }>(),
-  {
-    label: 'Projects',
-    showMoreButton: true,
-  }
-)
+defineProps<{
+  projects: {
+    name: string
+    url: string
+    icon: LucideIcon
+  }[]
+}>()
 
 const { isMobile } = useSidebar()
+const { currentSubNav, setNavigation, setDetailTitle } = useNavigation()
+
+// 处理项目点击
+const handleProjectClick = (projectName: string) => {
+  setNavigation('项目文档', projectName)
+  setDetailTitle(null) // 切换页面时清除第三级面包屑
+}
+
+// 检查项目是否激活
+const isProjectActive = (projectName: string) => {
+  return currentSubNav.value === projectName
+}
 </script>
 
 <template>
   <SidebarGroup class="group-data-[collapsible=icon]:hidden">
-    <SidebarGroupLabel>{{ props.label }}</SidebarGroupLabel>
+    <SidebarGroupLabel>文档</SidebarGroupLabel>
     <SidebarMenu>
       <SidebarMenuItem v-for="item in projects" :key="item.name">
-        <SidebarMenuButton as-child>
+        <SidebarMenuButton 
+          as-child 
+          @click="handleProjectClick(item.name)"
+          :class="{ 'bg-primary/10 text-primary font-medium': isProjectActive(item.name) }"
+        >
           <a :href="item.url">
             <component :is="item.icon" />
             <span>{{ item.name }}</span>
@@ -82,7 +91,7 @@ const { isMobile } = useSidebar()
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
-      <SidebarMenuItem v-if="props.showMoreButton">
+      <SidebarMenuItem>
         <SidebarMenuButton class="text-sidebar-foreground/70">
           <MoreHorizontal class="text-sidebar-foreground/70" />
           <span>More</span>

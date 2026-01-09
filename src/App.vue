@@ -1,32 +1,35 @@
 <script setup lang="ts">
-import AppSidebar from '@/components/AppSidebar.vue'
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { ref } from 'vue'
+import Portfolio from '@/components/Portfolio.vue'
+import FinanceApp from '@/components/finance/FinanceApp.vue'
 
+// 当前页面状态：'portfolio' 或 'finance'
+const currentPage = ref<'portfolio' | 'finance'>('portfolio')
+
+// 处理从 Portfolio 导航到其他页面
+const handleNavigate = (page: string) => {
+  if (page === 'finance' || page === '/finance') {
+    currentPage.value = 'finance'
+  }
+}
+
+// 返回简历页
+const handleNavigateBack = () => {
+  currentPage.value = 'portfolio'
+}
 </script>
 
 <template>
-  <SidebarProvider>
-    <AppSidebar />
-    <SidebarInset>
-      <header class="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-        <SidebarTrigger class="-ml-1" />
-      </header>
-      
-    </SidebarInset>
-  </SidebarProvider>
+  <Portfolio 
+    v-if="currentPage === 'portfolio'" 
+    @navigate="handleNavigate" 
+  />
+  <FinanceApp 
+    v-else-if="currentPage === 'finance'" 
+    @navigate-back="handleNavigateBack"
+  />
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+/* 保留原有的过渡效果 */
 </style>

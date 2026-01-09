@@ -459,26 +459,26 @@ const removeRole = (role) => {
               <FileText class="h-4 w-4" /> 申请信息
             </h3>
             <div class="grid grid-cols-1 gap-4 text-sm p-5 bg-muted/30 rounded-xl border">
-              <div class="grid grid-cols-3 items-start gap-4">
+              <div class="grid grid-cols-[80px_1fr] items-start gap-4">
                 <span class="text-muted-foreground text-right">申请人</span>
-                <span class="col-span-2 font-medium">{{ selectedApp.applicant }} <span class="text-muted-foreground font-normal ml-1">({{ selectedApp.department }})</span></span>
+                <span class="font-medium">{{ selectedApp.applicant }} <span class="text-muted-foreground font-normal ml-1">({{ selectedApp.department }})</span></span>
               </div>
-              <div class="grid grid-cols-3 items-start gap-4">
+              <div class="grid grid-cols-[80px_1fr] items-start gap-4">
                 <span class="text-muted-foreground text-right">申请时间</span>
-                <span class="col-span-2 font-mono text-xs mt-0.5">{{ selectedApp.createTime }}</span>
+                <span class="font-mono text-xs mt-0.5">{{ selectedApp.createTime }}</span>
               </div>
-              <div class="grid grid-cols-3 items-start gap-4">
+              <div class="grid grid-cols-[80px_1fr] items-start gap-4">
                 <span class="text-muted-foreground text-right pt-1">目标角色</span>
-                <div class="col-span-2 flex flex-wrap gap-2">
+                <div class="flex flex-wrap gap-2">
                   <Badge v-for="r in selectedApp.requestRoles" :key="r" variant="outline" class="bg-background px-2 py-0.5">
                     {{ r }}
                   </Badge>
                 </div>
               </div>
-              <Separator class="my-1 col-span-3 opacity-50" />
-              <div class="grid grid-cols-3 items-start gap-4">
+              <Separator class="my-1 opacity-50" />
+              <div class="grid grid-cols-[80px_1fr] items-start gap-4">
                 <span class="text-muted-foreground text-right pt-1">申请理由</span>
-                <span class="col-span-2 text-foreground/90 whitespace-pre-wrap leading-relaxed py-1">{{ selectedApp.reason }}</span>
+                <span class="text-foreground/90 whitespace-pre-wrap leading-relaxed py-1">{{ selectedApp.reason }}</span>
               </div>
             </div>
           </div>

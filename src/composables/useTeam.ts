@@ -13,24 +13,24 @@ const activeTeam = ref(teams.value[0])
  */
 export function useTeam() {
     // 切换团队
-    const setActiveTeam = (team) => {
+    const setActiveTeam = (team: any) => {
         activeTeam.value = team
     }
 
     // 添加新团队
-    const addTeam = (team) => {
+    const addTeam = (team: any) => {
         teams.value.push(team)
         // 自动切换到新团队
         activeTeam.value = team
     }
 
     // 删除团队
-    const removeTeam = (teamName) => {
+    const removeTeam = (teamName: string) => {
         const index = teams.value.findIndex(t => t.name === teamName)
         if (index > -1) {
             teams.value.splice(index, 1)
             // 如果删除的是当前团队，切换到第一个
-            if (activeTeam.value.name === teamName && teams.value.length > 0) {
+            if (activeTeam.value?.name === teamName && teams.value.length > 0) {
                 activeTeam.value = teams.value[0]
             }
         }
@@ -50,11 +50,11 @@ export function useTeam() {
             .filter(nav => permissions.navMain.includes(nav.id))
             .map(nav => {
                 // 如果有子项过滤配置
-                if (permissions.navItems && permissions.navItems[nav.id]) {
+                if (permissions!.navItems && (permissions!.navItems as Record<string, string[]>)[nav.id]) {
                     return {
                         ...nav,
                         items: nav.items.filter(item =>
-                            permissions.navItems[nav.id].includes(item.id)
+                            (permissions!.navItems as Record<string, string[]>)[nav.id]?.includes(item.id)
                         )
                     }
                 }
@@ -73,7 +73,7 @@ export function useTeam() {
 
         // 根据权限配置过滤项目
         return sidebarConfig.projects.filter(project =>
-            permissions.projects.includes(project.id)
+            (permissions!.projects as string[]).includes(project.id)
         )
     })
 

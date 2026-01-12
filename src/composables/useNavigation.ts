@@ -3,8 +3,8 @@ import { ref, computed } from 'vue'
 // 导航状态
 const currentMainNav = ref('工作台')
 const currentSubNav = ref('待办清单')
-const detailTitle = ref(null) // 存储详情页标题（第三级面包屑）
-const historyFilter = ref(null) // 存储要传递给历史记录页面的筛选参数
+const detailTitle = ref<string | null>(null) // 存储详情页标题（第三级面包屑）
+const historyFilter = ref<any>(null) // 存储要传递给历史记录页面的筛选参数
 
 /**
  * 导航状态管理 Composable
@@ -12,18 +12,18 @@ const historyFilter = ref(null) // 存储要传递给历史记录页面的筛选
  */
 export function useNavigation() {
     // 设置当前导航
-    const setNavigation = (mainNav, subNav) => {
+    const setNavigation = (mainNav: string, subNav: string) => {
         currentMainNav.value = mainNav
         currentSubNav.value = subNav
     }
 
     // 设置详情标题（用于第三级面包屑）
-    const setDetailTitle = (title) => {
+    const setDetailTitle = (title: string | null) => {
         detailTitle.value = title
     }
 
     // 设置历史记录筛选参数
-    const setHistoryFilter = (filter) => {
+    const setHistoryFilter = (filter: any) => {
         historyFilter.value = filter
     }
 
@@ -33,7 +33,7 @@ export function useNavigation() {
     }
 
     // 导航到历史记录页面并设置筛选
-    const navigateToHistory = (shop) => {
+    const navigateToHistory = (shop: string) => {
         historyFilter.value = { shop }
         currentMainNav.value = '工作台'
         currentSubNav.value = '历史记录'
@@ -75,7 +75,7 @@ export function useNavigation() {
             '用户操作手册': 'UserManual',
         }
 
-        return pageMap[currentSubNav.value] || 'TodoList'
+        return (pageMap as Record<string, string>)[currentSubNav.value] || 'TodoList'
     })
 
     return {

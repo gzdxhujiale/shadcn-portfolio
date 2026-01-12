@@ -134,7 +134,7 @@ const navigateToDeliverable = (item: DeliverableItem) => {
   }
   // 高保真原型图卡片特殊处理，新窗口打开
   if (item.title === '高保真原型图') {
-    window.open('/?page=finance', '_blank')
+    window.open(`${import.meta.env.BASE_URL}?page=finance`, '_blank')
     return
   }
   if (item?.path) {

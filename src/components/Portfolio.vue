@@ -65,6 +65,24 @@ const deliverables: DeliverableItem[] = [
 // 项目经验数据
 const projects = [
   {
+    title: '国际化中后台-公会与主播管理系统',
+    role: '海外事业部-产品生', roleColor: 'blue',
+    type: '中后台产品',
+    date: ' ',
+    tags: ['公会管理', '本地化运营', '主播管理','运营管理','原型设计', 'PRD文档', 'SOP标准化'],
+    highlightColor: 'blue',
+    highlights: [
+      { icon: TargetIcon, label: '痛点', text: '公会管理全链路流程复杂，原系统信息展示杂乱、操作路径过长，导致公会运营管理效率低下' },
+      { icon: ZapIcon, label: '方案', text: '通过优化交互布局，建立标准 SOP 和用户操作手册，简化公会、主播的入驻、运营、解散流程，提升易用性和可复用性。' }
+    ],
+    metrics: [
+      { value: '15%', label: '操作效率提升' },
+      { value: '7个', label: '支撑应用' },
+      { value: '500+', label: '用户数' },
+      { value: '100%', label: '流程标准化覆盖' }
+    ]
+  },
+  {
     title: 'RPA+AI 智能客服助手',
     role: '策略中台产品经理', roleColor: 'blue',
     type: 'AI功能产品',
@@ -84,11 +102,11 @@ const projects = [
   },
   {
     title: '财务数据中心与 BI 系统',
-    role: '中台产品经理', roleColor: 'purple',
+    role: '中台产品经理', roleColor: 'blue',
     type: '数据产品',
     date: ' ',
     tags: ['数据仓库', '星型模型', 'ETL管道', 'BI看板'],
-    highlightColor: 'purple',
+    highlightColor: 'blue',
     highlights: [
       { icon: AlertCircleIcon, label: '痛点', text: '公司扩张期面临数据"不可用、不好用、不被用"困境，决策缺乏支撑。' },
       { icon: LayersIcon, label: '方案', text: '构建从数仓建模、元规则 ETL 到前端看板的全链路体系，实现业财贯通。' }
@@ -137,6 +155,11 @@ const navigateToDeliverable = (item: DeliverableItem) => {
     window.open(`${import.meta.env.BASE_URL}?page=finance`, '_blank')
     return
   }
+  // AI Agent 卡片特殊处理，新窗口打开
+  if (item.title === 'AI Agent') {
+    window.open(`${import.meta.env.BASE_URL}?page=ai`, '_blank')
+    return
+  }
   if (item?.path) {
     if (item.path.startsWith('http')) {
       window.open(item.path, '_blank')
@@ -177,7 +200,7 @@ onMounted(() => {
     <nav class="nav-bar">
       <div class="nav-content">
         <div class="nav-logo">
-          <span class="logo-icon"><BriefcaseIcon :size="16" /></span>
+          <span class="logo-icon"><img src="/fish-symbol.svg" width="16" height="16" alt="Logo" /></span>
           胡家乐 Portfolio
         </div>
         <div class="nav-links">
@@ -196,14 +219,13 @@ onMounted(() => {
       
       <div class="hero-content">
         <div class="avatar-wrapper reveal" data-reveal-id="avatar">
-          <div class="avatar avatar-placeholder">
-            <span class="avatar-initials">胡</span>
+          <div class="avatar">
+            <img src="/fish-symbol.svg" alt="Avatar" class="avatar-img" />
           </div>
         </div>
         <h1 class="hero-title reveal" data-reveal-id="title">胡家乐</h1>
         <p class="hero-subtitle reveal" data-reveal-id="subtitle">
           数据驱动 | 结果导向型产品经理
-          <span class="hero-subtitle-sub">以数据洞察驱动决策，用 AI 技术重构流程</span>
         </p>
         <div class="hero-tags reveal" data-reveal-id="tags">
           <div class="hero-tag">
@@ -472,19 +494,17 @@ onMounted(() => {
 .avatar {
   width: 6rem; height: 6rem;
   border-radius: 50%;
-  object-fit: cover;
   border: 4px solid rgba(255,255,255,0.1);
-}
-.avatar-placeholder {
-  background: linear-gradient(135deg, #60a5fa 0%, #818cf8 100%);
+  overflow: hidden;
+  background: white; /* Optional: background for transparent svg */
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.avatar-initials {
-  color: white;
-  font-size: 2.5rem;
-  font-weight: 700;
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .hero-title {
   font-size: 2.5rem;

@@ -55,7 +55,7 @@ const deliverables: DeliverableItem[] = [
     tag: '作品集', tagColor: 'emerald',
     icon: BotIcon,
     title: 'AI Agent',
-    desc: 'AI Agent / 自动化方案演示，体现提效与流程重构能力。',
+    desc: 'AI Agent / 基于coze、Gemini等大模型构建的智能体应用,或ai coding辅助开发的应用',
     tags: ['AI Agent', '工作流', 'AI coding'],
     footer: { icon: ArrowRightIcon, text: '查看应用列表' },
     path: '/ai'

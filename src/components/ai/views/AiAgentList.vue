@@ -7,11 +7,28 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
+import aigenuiPrompt from './aigenui-prompt.txt?raw'
+
 const { agentDetailId, setAgentDetail } = useAiNavigation()
 
 // 动态配置：通过调整数组顺序即可排序，添加对象即可新增
 const agentsConfig = [
   {
+    id: 'aigentui',
+    title: 'AIGen-UI',
+    desc: `基于coze搭建的AI Agent，用于快速搭建规范的B端中后台产品UIUX。支持AI Agent生成或手动配置修改`,
+    disabled: false,
+    share_config: [
+      { 
+        platform: 'Coze', 
+        url: 'https://aigenui.hujiale.works',
+        desc: '已部署在aigenui.hujiale.works，点击即可访问，支持邮箱注册账号或使用测试账户登录体验'
+      }
+    ],
+    prompt: aigenuiPrompt,
+    knowledgeBase: []
+  },
+{
     id: 'uiux',
     title: 'B端产品UIUX',
     desc: '专注于B端产品的用户体验与界面设计专家，提供专业的设计建议与规范。',

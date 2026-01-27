@@ -21,7 +21,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { useNavigation } from '@/composables/useNavigation.js'
+import { useFinanceApp } from '@/composables/useFinanceApp'
 
 // --- 数据常量 ---
 const CLIENT_OPTIONS = ['客户A', '客户B', '客户C']
@@ -171,7 +171,7 @@ const paginatedData = computed(() => {
 const totalPages = computed(() => Math.ceil(filteredData.value.length / pageSize) || 1)
 
 // --- 导航 ---
-const { detailTitle } = useNavigation()
+const { detailTitle } = useFinanceApp()
 
 watch(detailTitle, (newVal) => {
   if (newVal === null && view.value === 'detail') {

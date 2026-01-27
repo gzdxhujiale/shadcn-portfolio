@@ -26,7 +26,7 @@ import {
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet'
-import { useNavigation } from '@/composables/useNavigation.js'
+import { useFinanceApp } from '@/composables/useFinanceApp'
 
 const CLIENT_OPTIONS = ['客户A', '客户B', '客户C']
 const PLATFORM_OPTIONS = ['抖音', '快手', '淘宝']
@@ -98,7 +98,7 @@ const filters = reactive({
 })
 
 // 获取导航状态
-const { historyFilter, clearHistoryFilter } = useNavigation()
+const { historyFilter, clearHistoryFilter } = useFinanceApp()
 
 // --- 计算属性 ---
 const availableShops = computed(() => {

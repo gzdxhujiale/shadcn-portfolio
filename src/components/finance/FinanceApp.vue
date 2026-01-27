@@ -85,8 +85,7 @@ import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 
 // Composables
-import { useNavigation } from '@/composables/useNavigation'
-import { useTeam } from '@/composables/useTeam'
+import { useFinanceApp } from '@/composables/useFinanceApp'
 
 // 导入所有页面组件
 // workspace
@@ -111,8 +110,8 @@ import DataDictionary from '@/components/finance/views/config/DataDictionary.vue
 import UserManual from '@/components/finance/views/config/UserManual.vue'
 
 // Logic
-const { breadcrumbs, currentPage, setDetailTitle, currentSubNav, setNavigation } = useNavigation()
-const { teams, user, filteredNavMain, filteredProjects, activeTeam, setActiveTeam, addTeam, allNavItems, allProjects } = useTeam()
+const { breadcrumbs, currentPage, setDetailTitle, currentSubNav, setNavigation } = useFinanceApp()
+const { teams, user, filteredNavMain, filteredProjects, activeTeam, setActiveTeam, addTeam, allNavItems, allProjects } = useFinanceApp()
 
 // 手动实现 isMobile 检查，因为在 SidebarProvider 内部使用 useSidebar 会有问题（provide/inject 顺序）
 const isMobile = ref(false)
@@ -246,7 +245,7 @@ const handleSave = () => {
   
   const team = {
     name: newTeam.name.trim(),
-    logo: availableLogos[newTeam.logoIndex]?.icon ?? availableLogos[0].icon,
+    logo: availableLogos[newTeam.logoIndex]?.icon ?? availableLogos[0]?.icon,
     plan: newTeam.plan.trim() || '自定义角色',
     permissions
   }

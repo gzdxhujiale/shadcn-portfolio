@@ -1,6 +1,6 @@
 <script setup>
 import { ref, reactive, computed, watch, onMounted, onUnmounted } from 'vue'
-import { useNavigation } from '@/composables/useNavigation'
+import { useFinanceApp } from '@/composables/useFinanceApp'
 import { 
   Plus,
   Pencil,
@@ -38,7 +38,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-const { detailTitle, setDetailTitle } = useNavigation()
+const { detailTitle, setDetailTitle } = useFinanceApp()
 
 // Tab 标题映射
 const TAB_TITLES = {

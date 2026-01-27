@@ -10,14 +10,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Separator } from '@/components/ui/separator'
-import { useNavigation } from '@/composables/useNavigation.js'
+import { useFinanceApp } from '@/composables/useFinanceApp'
 
 const props = defineProps({
   selectedItem: { type: Object, required: true },
   goBack: { type: Function, required: true }
 })
 
-const { setDetailTitle, navigateToHistory } = useNavigation()
+const { setDetailTitle, navigateToHistory } = useFinanceApp()
 
 // 生成文件名
 const generateFileName = (billType) => {

@@ -50,9 +50,8 @@ const deliverables: DeliverableItem[] = [
     title: 'PRD 文档',
     desc: '需求背景、目标、方案与验收口径，强调可落地与可衡量。',
     tags: ['需求拆解', '验收标准', '数据口径'],
-    footer: { icon: AlertCircleIcon, text: '维护中' },
-    path: 'https://baidu.com',
-    disabled: true
+    footer: { icon: ArrowRightIcon, text: '查看文档列表' },
+    path: '/prd'
   },
   {
     visible: true,
@@ -167,6 +166,11 @@ const navigateToDeliverable = (item: DeliverableItem) => {
   // AI Agent 卡片特殊处理，新窗口打开
   if (item.title === 'AI Agent') {
     window.open(`${import.meta.env.BASE_URL}?page=ai`, '_blank')
+    return
+  }
+  // PRD 文档卡片特殊处理，新窗口打开
+  if (item.title === 'PRD 文档') {
+    window.open(`${import.meta.env.BASE_URL}?page=prd`, '_blank')
     return
   }
   if (item?.path) {

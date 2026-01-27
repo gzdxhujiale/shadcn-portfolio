@@ -38,11 +38,11 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { useNavigation } from '@/composables/useNavigation.js'
+import { useFinanceApp } from '@/composables/useFinanceApp'
 import { ECOMMERCE_DATA } from './ecommerce_data.js'
 
 // --- 导航 ---
-const { setDetailTitle, detailTitle } = useNavigation()
+const { setDetailTitle, detailTitle } = useFinanceApp()
 
 // --- 筛选状态 ---
 const selectedYear = ref('2025')

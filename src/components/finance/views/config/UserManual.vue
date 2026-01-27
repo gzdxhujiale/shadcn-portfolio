@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
-import { useNavigation } from '@/composables/useNavigation'
+import { useFinanceApp } from '@/composables/useFinanceApp'
 import { 
   Search, 
   ChevronRight,
@@ -16,7 +16,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 
-const { detailTitle, setDetailTitle } = useNavigation()
+const { detailTitle, setDetailTitle } = useFinanceApp()
 
 
 // --- 帮助文档数据 ---

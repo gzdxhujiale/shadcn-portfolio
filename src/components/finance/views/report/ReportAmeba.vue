@@ -54,10 +54,10 @@ import {
 } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { useNavigation } from '@/composables/useNavigation.js';
+import { useFinanceApp } from '@/composables/useFinanceApp';
 
 // ================= 0. 导航控制 =================
-const { setDetailTitle, detailTitle } = useNavigation();
+const { setDetailTitle, detailTitle } = useFinanceApp();
 
 // 监听面包屑导航返回
 watch(detailTitle, (newVal) => {

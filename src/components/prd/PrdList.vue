@@ -26,7 +26,8 @@ const documents = [
     date: '2025-10-24',
     size: '2.4 MB',
     type: 'PDF',
-    status: 'Final'
+    status: 'Final',
+    downloadable: true
   },
   {
     id: 2,
@@ -34,7 +35,8 @@ const documents = [
     date: '2025-10-25',
     size: '1.2 MB',
     type: 'Image',
-    status: 'Draft'
+    status: 'Draft',
+    downloadable: false
   }
 ]
 
@@ -51,6 +53,11 @@ const goBack = () => {
 }
 
 const handleDownload = (doc: any) => {
+  if (doc.downloadable === false) {
+    alert('该文档正在维护中，暂时无法下载')
+    return
+  }
+  
   try {
     const fileUrl = new URL(`./${doc.title}`, import.meta.url).href
     const link = document.createElement('a')

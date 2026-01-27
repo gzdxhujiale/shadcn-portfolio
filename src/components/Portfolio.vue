@@ -6,6 +6,7 @@ import {
   AlertCircleIcon, BrainIcon, UserCheckIcon, CpuIcon,
   ArrowRightIcon, BookOpenIcon
 } from 'lucide-vue-next'
+import fishSymbol from '@/assets/fish-symbol.svg'
 import type { FunctionalComponent } from 'vue'
 import type { LucideProps } from 'lucide-vue-next'
 
@@ -213,7 +214,7 @@ onMounted(() => {
     <nav class="nav-bar">
       <div class="nav-content">
         <div class="nav-logo">
-          <span class="logo-icon"><img src="/fish-symbol.svg" width="16" height="16" alt="Logo" /></span>
+          <span class="logo-icon"><img :src="fishSymbol" width="16" height="16" alt="Logo" /></span>
           胡家乐 Portfolio
         </div>
         <div class="nav-links">
@@ -233,7 +234,7 @@ onMounted(() => {
       <div class="hero-content">
         <div class="avatar-wrapper reveal" data-reveal-id="avatar">
           <div class="avatar">
-            <img src="/fish-symbol.svg" alt="Avatar" class="avatar-img" />
+            <img :src="fishSymbol" alt="Avatar" class="avatar-img" />
           </div>
         </div>
         <h1 class="hero-title reveal" data-reveal-id="title">胡家乐</h1>

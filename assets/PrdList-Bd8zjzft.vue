@@ -27,7 +27,7 @@ const documents = [
     size: '2.4 MB',
     type: 'PDF',
     status: 'Final',
-    downloadable: true
+    downloadable: false
   },
   {
     id: 2,

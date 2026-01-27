@@ -11,6 +11,7 @@ import type { LucideProps } from 'lucide-vue-next'
 
 // Type definitions
 interface DeliverableItem {
+  visible: boolean // Added visible property
   tag: string
   tagColor: string
   icon: FunctionalComponent<LucideProps>
@@ -33,6 +34,7 @@ const revealedElements = ref(new Set())
 // 作品交付物（首页三卡）
 const deliverables: DeliverableItem[] = [
   {
+    visible: true,
     tag: '作品集', tagColor: 'indigo',
     icon: LayoutGridIcon,
     title: '高保真原型图',
@@ -42,6 +44,7 @@ const deliverables: DeliverableItem[] = [
     path: '/finance'
   },
   {
+    visible: true,
     tag: '作品集', tagColor: 'slate',
     icon: FileEditIcon,
     title: 'PRD 文档',
@@ -52,6 +55,7 @@ const deliverables: DeliverableItem[] = [
     disabled: true
   },
   {
+    visible: true,
     tag: '作品集', tagColor: 'emerald',
     icon: BotIcon,
     title: 'AI Agent',
@@ -65,6 +69,7 @@ const deliverables: DeliverableItem[] = [
 // 项目经验数据
 const projects = [
   {
+    visible: false,
     title: '国际化中后台-公会与主播管理系统',
     role: '海外事业部-产品生', roleColor: 'blue',
     type: '中后台产品',
@@ -83,6 +88,7 @@ const projects = [
     ]
   },
   {
+    visible: false,
     title: 'RPA+AI 智能客服助手',
     role: '策略中台产品经理', roleColor: 'blue',
     type: 'AI功能产品',
@@ -101,6 +107,7 @@ const projects = [
     ]
   },
   {
+    visible: false,
     title: '财务数据中心与 BI 系统',
     role: '中台产品经理', roleColor: 'blue',
     type: '数据产品',
@@ -122,19 +129,21 @@ const projects = [
 
 // 自我评价
 const selfEvaluations = [
-  { icon: BrainIcon, title: '结构化思维', text: '擅长拆解复杂跨部门问题，精准抽象痛点。' },
-  { icon: ZapIcon, title: '高度自驱', text: '主动深入业务一线，推动方案从0到1闭环落地。' },
-  { icon: TargetIcon, title: '结果导向', text: '聚焦量化成果，用数据证明价值。' }
+  { visible: false, icon: BrainIcon, title: '结构化思维', text: '擅长拆解复杂跨部门问题，精准抽象痛点。' },
+  { visible: false, icon: ZapIcon, title: '高度自驱', text: '主动深入业务一线，推动方案从0到1闭环落地。' },
+  { visible: false, icon: TargetIcon, title: '结果导向', text: '聚焦量化成果，用数据证明价值。' }
 ]
 
 // 产品方法论
 const methodologies = {
+  visible: false,
   design: ['RICE模型', 'KANO模型', 'MVP思维'],
   tech: ['敏捷开发', '数据治理', 'A/B测试']
 }
 
 // 技能栈
 const skills = {
+  visible: false,
   design: ['Axure', 'Figma'],
   tech: ['SQL', 'Python', 'Excel', 'Tableau']
 }
@@ -224,9 +233,6 @@ onMounted(() => {
           </div>
         </div>
         <h1 class="hero-title reveal" data-reveal-id="title">胡家乐</h1>
-        <p class="hero-subtitle reveal" data-reveal-id="subtitle">
-          数据驱动 | 结果导向型产品经理
-        </p>
         <div class="hero-tags reveal" data-reveal-id="tags">
           <div class="hero-tag">
             <SchoolIcon :size="14" />
@@ -251,7 +257,7 @@ onMounted(() => {
       <section id="deliverables" class="competency-section reveal" data-reveal-id="competency">
         <div class="competency-grid">
           <div
-            v-for="(item, index) in deliverables"
+            v-for="(item, index) in deliverables.filter(i => i.visible)"
             :key="index"
             class="competency-card clickable"
             :class="`card-${item.tagColor}`"
@@ -289,12 +295,12 @@ onMounted(() => {
       <!-- 双栏布局 -->
       <div class="two-column">
         <!-- 左栏：项目经验 -->
-        <div id="projects" class="left-column">
+        <div id="projects" class="left-column" v-if="projects.some(p => p.visible)">
           <h2 class="section-title reveal" data-reveal-id="projects-title">
             <BriefcaseIcon :size="20" /> 核心项目经验
           </h2>
           
-          <article v-for="(project, index) in projects" :key="index" class="project-card reveal" :class="`border-${project.roleColor}`" :data-reveal-id="`project-${index}`">
+          <article v-for="(project, index) in projects.filter(p => p.visible)" :key="index" class="project-card reveal" :class="`border-${project.roleColor}`" :data-reveal-id="`project-${index}`">
             <div class="project-header">
               <div>
                 <h3>{{ project.title }}</h3>
@@ -330,10 +336,10 @@ onMounted(() => {
         <!-- 右栏：技能与评价 -->
         <div class="right-column">
           <!-- 自我评价 -->
-          <div class="side-card reveal" data-reveal-id="evaluation">
+          <div v-if="selfEvaluations.some(e => e.visible)" class="side-card reveal" data-reveal-id="evaluation">
             <h3><UserCheckIcon :size="20" /> 自我评价</h3>
             <div class="evaluation-list">
-              <div v-for="(item, index) in selfEvaluations" :key="index" class="evaluation-item">
+              <div v-for="(item, index) in selfEvaluations.filter(e => e.visible)" :key="index" class="evaluation-item">
                 <component :is="item.icon" :size="16" class="eval-icon" />
                 <p><strong>{{ item.title }}：</strong>{{ item.text }}</p>
               </div>
@@ -341,7 +347,7 @@ onMounted(() => {
           </div>
 
           <!-- 技能栈 -->
-          <div class="side-card reveal" data-reveal-id="methodologies">
+          <div v-if="methodologies.visible" class="side-card reveal" data-reveal-id="methodologies">
             <h3><BookOpenIcon :size="20" /> 产品方法论</h3>
             <div class="skill-group">
               <h4>产品设计</h4>
@@ -357,7 +363,7 @@ onMounted(() => {
             </div>
           </div>
 
-          <div id="skills" class="side-card reveal" data-reveal-id="skills">
+          <div v-if="skills.visible" id="skills" class="side-card reveal" data-reveal-id="skills">
             <h3><CpuIcon :size="20" /> 技术栈</h3>
             <div class="skill-group">
               <h4>产品设计</h4>

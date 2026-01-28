@@ -24,10 +24,10 @@ const documents = [
     id: 1,
     title: '后台用户操作手册.pdf',
     date: '2025-10-24',
-    size: '2.4 MB',
+    size: '177 KB',
     type: 'PDF',
     status: 'Final',
-    downloadable: false
+    downloadable: true
   },
   {
     id: 2,

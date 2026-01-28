@@ -26,7 +26,7 @@ const documents = [
     date: '2026-01-19',
     size: '177 KB',
     type: 'PDF',
-    status: 'Final',
+    status: '可下载',
     downloadable: true
   },
   {
@@ -35,7 +35,7 @@ const documents = [
     date: '2025-10-25',
     size: '1.2 MB',
     type: 'PDF',
-    status: 'Draft',
+    status: '维护中',
     downloadable: false
   },
   {
@@ -44,7 +44,7 @@ const documents = [
     date: '2025-10-25',
     size: '1.2 MB',
     type: 'PDF',
-    status: 'Draft',
+    status: '维护中',
     downloadable: false
   }
 ]

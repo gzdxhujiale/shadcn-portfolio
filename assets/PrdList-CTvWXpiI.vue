@@ -23,7 +23,7 @@ const documents = [
   {
     id: 1,
     title: '后台用户操作手册.pdf',
-    date: '2025-10-24',
+    date: '2026-01-19',
     size: '177 KB',
     type: 'PDF',
     status: 'Final',

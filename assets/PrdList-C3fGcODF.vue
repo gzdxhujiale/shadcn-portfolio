@@ -22,7 +22,7 @@ const searchQuery = ref('')
 const documents = [
   {
     id: 1,
-    title: 'image5.png',
+    title: '后台用户操作手册.pdf',
     date: '2025-10-24',
     size: '2.4 MB',
     type: 'PDF',
@@ -31,10 +31,19 @@ const documents = [
   },
   {
     id: 2,
-    title: '积分商城业务流程图.png',
+    title: 'aigenui-PRD.pdf',
     date: '2025-10-25',
     size: '1.2 MB',
-    type: 'Image',
+    type: 'PDF',
+    status: 'Draft',
+    downloadable: false
+  },
+  {
+    id: 3,
+    title: 'aigenui-工作流.pdf',
+    date: '2025-10-25',
+    size: '1.2 MB',
+    type: 'PDF',
     status: 'Draft',
     downloadable: false
   }

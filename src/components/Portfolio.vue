@@ -48,9 +48,9 @@ const deliverables: DeliverableItem[] = [
     visible: true,
     tag: '作品集', tagColor: 'slate',
     icon: FileEditIcon,
-    title: 'PRD 文档',
-    desc: '需求背景、目标、方案与验收口径，强调可落地与可衡量。',
-    tags: ['需求拆解', '验收标准', '数据口径'],
+    title: '文档',
+    desc: '产品prd、ai工作流程图、用户操作手册的示例文档。',
+    tags: ['PRD', '流程图', '用户操作手册'],
     footer: { icon: ArrowRightIcon, text: '查看文档列表' },
     path: '/prd'
   },

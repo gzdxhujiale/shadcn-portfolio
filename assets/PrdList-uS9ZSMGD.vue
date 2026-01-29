@@ -31,9 +31,9 @@ const documents = [
   },
   {
     id: 2,
-    title: 'aigenui-PRD.pdf',
+    title: 'AIGen-UI+产品需求文档.jpg',
     date: '2025-10-25',
-    size: '1.2 MB',
+    size: '3.4 MB',
     type: 'PDF',
     status: '可下载',
     downloadable: true

@@ -172,32 +172,22 @@ const navigateToDeliverable = (item: DeliverableItem) => {
     return
   }
   
+  // 如果没有 path 但有 url，新窗口打开 url
   if (!item.path && item.url) {
     window.open(item.url, '_blank')
     return
   }
   
-  // 高保真原型图卡片特殊处理，新窗口打开
-  if (item.title === '高保真原型图') {
-    window.open(`${import.meta.env.BASE_URL}?page=finance`, '_blank')
-    return
-  }
-  // AI Agent 卡片特殊处理，新窗口打开
-  if (item.title === 'AI Agent') {
-    window.open(`${import.meta.env.BASE_URL}?page=ai`, '_blank')
-    return
-  }
-  // PRD 文档卡片特殊处理，新窗口打开
-  if (item.title === 'PRD 文档') {
-    window.open(`${import.meta.env.BASE_URL}?page=prd`, '_blank')
-    return
-  }
   if (item?.path) {
     if (item.path.startsWith('http')) {
       window.open(item.path, '_blank')
     } else {
-      // 发送导航事件到父组件
-      emit('navigate', item.path)
+      // 在原有链接内添加 ?page=路径（取路径关键词）
+      // 提取路径中的关键字（例如从 /finance 中提取 finance）
+      const cleanPath = item.path.startsWith('/') ? item.path.substring(1) : item.path
+      // 使用 window.open 打开，并在原有 URL 基础上添加 query 参数
+      // 符合 App.vue 中对 page 参数的解析逻辑
+      window.open(`${import.meta.env.BASE_URL}?page=${cleanPath}`, '_blank')
     }
   }
 }

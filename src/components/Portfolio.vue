@@ -21,6 +21,7 @@ interface DeliverableItem {
   tags: string[]
   footer: { icon: FunctionalComponent<LucideProps>; text: string }
   path: string
+  url?: string // Added url property
   disabled?: boolean
   metric?: string
   metricUnit?: string
@@ -32,17 +33,28 @@ const emit = defineEmits(['navigate'])
 const emailCopied = ref(false)
 const revealedElements = ref(new Set())
 
-// 作品交付物（首页三卡）
+// 作品交付物
 const deliverables: DeliverableItem[] = [
   {
     visible: true,
     tag: '作品集', tagColor: 'indigo',
     icon: LayoutGridIcon,
     title: '高保真原型图',
-    desc: '可交互原型演示与信息架构，突出流程闭环与可用性。',
+    desc: '可交互的高保真原型演示，已脱敏',
     tags: ['信息架构', '交互流程', '高保真页面'],
     footer: { icon: ArrowRightIcon, text: '查看原型演示' },
     path: '/finance'
+  },
+  {
+    visible: true,
+    tag: '作品集', tagColor: 'slate',
+    icon: FileEditIcon,
+    title: 'AIGen-UI',
+    desc: 'AIGen-UI 是一个旨在解决B端中后台产品设计的“前端配置驱动 + AI辅助”生成引擎 。它可通过内置的 AI智能体 理解用户意图并生成标准化的 JSON 配置文件，经由前端引擎实时渲染出符合企业级规范、可交互、可二次编辑的高保真原型。',
+    tags: ['AiCoding全栈开发','JSON配置驱动', '内置coze ai agent智能体','前端配置驱动','可视化二次编辑','AI 工作流'],
+    footer: { icon: ArrowRightIcon, text: '点击体验AIGen-UI' },
+    path: '',
+    url: 'https://aigenui.hujiale.works/'
   },
   {
     visible: true,
@@ -159,6 +171,12 @@ const navigateToDeliverable = (item: DeliverableItem) => {
     alert('维护中，暂时不可查看')
     return
   }
+  
+  if (!item.path && item.url) {
+    window.open(item.url, '_blank')
+    return
+  }
+  
   // 高保真原型图卡片特殊处理，新窗口打开
   if (item.title === '高保真原型图') {
     window.open(`${import.meta.env.BASE_URL}?page=finance`, '_blank')

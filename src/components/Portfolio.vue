@@ -37,17 +37,17 @@ const revealedElements = ref(new Set())
 const deliverables: DeliverableItem[] = [
   {
     visible: true,
-    tag: '作品集', tagColor: 'indigo',
+    tag: '高保真原型', tagColor: 'indigo',
     icon: LayoutGridIcon,
-    title: '高保真原型图',
+    title: '财务平台',
     desc: '可交互的高保真原型演示，已脱敏',
     tags: ['信息架构', '交互流程', '高保真页面'],
-    footer: { icon: ArrowRightIcon, text: '查看原型演示' },
+    footer: { icon: ArrowRightIcon, text: '点击查看原型演示' },
     path: '/finance'
   },
   {
     visible: true,
-    tag: '作品集', tagColor: 'slate',
+    tag: 'AI产品', tagColor: 'slate',
     icon: FileEditIcon,
     title: 'AIGen-UI',
     desc: 'AIGen-UI 是一个旨在解决B端中后台产品设计的“前端配置驱动 + AI辅助”生成引擎 。它可通过内置的 AI智能体 理解用户意图并生成标准化的 JSON 配置文件，经由前端引擎实时渲染出符合企业级规范、可交互、可二次编辑的高保真原型。',
@@ -58,22 +58,22 @@ const deliverables: DeliverableItem[] = [
   },
   {
     visible: true,
-    tag: '作品集', tagColor: 'slate',
+    tag: '文档', tagColor: 'slate',
     icon: FileEditIcon,
     title: '文档',
     desc: '产品prd、ai工作流程图、用户操作手册的示例文档。',
     tags: ['PRD', '流程图', '用户操作手册'],
-    footer: { icon: ArrowRightIcon, text: '查看文档列表' },
+    footer: { icon: ArrowRightIcon, text: '点击查看文档列表' },
     path: '/prd'
   },
   {
     visible: true,
-    tag: '作品集', tagColor: 'emerald',
+    tag: 'AI作品集', tagColor: 'emerald',
     icon: BotIcon,
     title: 'AI Agent',
-    desc: 'AI Agent / 基于coze、Gemini等大模型构建的智能体应用,或ai coding辅助开发的应用',
+    desc: 'AI Agent / 基于coze、Gemini等大模型构建的智能体应用,或ai coding全栈开发的应用/工作流',
     tags: ['AI Agent', '工作流', 'AI coding'],
-    footer: { icon: ArrowRightIcon, text: '查看应用列表' },
+    footer: { icon: ArrowRightIcon, text: '点击查看AI应用列表' },
     path: '/ai'
   }
 ]

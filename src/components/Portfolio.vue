@@ -47,11 +47,11 @@ const deliverables: DeliverableItem[] = [
   },
   {
     visible: true,
-    tag: 'AI产品', tagColor: 'slate',
+    tag: 'AI产品', tagColor: 'emerald',
     icon: FileEditIcon,
     title: 'AIGen-UI',
-    desc: 'AIGen-UI 是一个旨在解决B端中后台产品设计的“前端配置驱动 + AI辅助”生成引擎 。它可通过内置的 AI智能体 理解用户意图并生成标准化的 JSON 配置文件，经由前端引擎实时渲染出符合企业级规范、可交互、可二次编辑的高保真原型。',
-    tags: ['AiCoding全栈开发','JSON配置驱动', '内置coze ai agent智能体','前端配置驱动','可视化二次编辑','AI 工作流'],
+    desc: 'AIGen-UI 旨在打造一个"中台化"的B端产品UIUX生成引擎。通过内置的 AI智能体 理解用户意图并生成标准化的 JSON 配置文件，经由前端引擎实时渲染出符合企业级规范、可交互、可二次编辑的高保真原型。',
+    tags: ['AiCoding全栈开发', '内置coze ai agent智能体','前端JSON配置驱动','可视化编辑','AI 工作流',' Arco design设计规范'],
     footer: { icon: ArrowRightIcon, text: '点击体验AIGen-UI' },
     path: '',
     url: 'https://aigenui.hujiale.works/'
